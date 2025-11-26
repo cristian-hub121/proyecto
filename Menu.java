@@ -13,11 +13,11 @@ public class Menu {
         int opcion;
 
         do {
-            System.out.println("\n===== MENÚ PRINCIPAL =====");
+            System.out.println("\n===== MENU PRINCIPAL =====");
             System.out.println("1. Registrar empleado");
-            System.out.println("2. Mostrar nómina");
+            System.out.println("2. Mostrar nomina");
             System.out.println("3. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
             opcion = sc.nextInt();
             sc.nextLine(); // limpiar buffer
 
@@ -67,7 +67,7 @@ public class Menu {
             return;
         }
 
-        System.out.println("\n===== NÓMINA GENERAL =====");
+        System.out.println("\n===== NOMINA GENERAL =====");
         double totalNomina = 0;
 
         for (Empleado emp : empleados) {
@@ -87,6 +87,6 @@ public class Menu {
             System.out.println("Salario Neto: $" + salarioNeto);
         }
 
-        System.out.println("\nTOTAL NÓMINA A PAGAR POR LA EMPRESA: $" + totalNomina);
+        System.out.println("\nTOTAL NOMINA A PAGAR POR LA EMPRESA: $" + totalNomina);
     }
 }
