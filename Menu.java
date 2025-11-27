@@ -82,7 +82,7 @@ public class Menu {
             System.out.println("Cargo: " + emp.getCargo());
             System.out.println("Sueldo Base: $" + emp.getSueldoBase());
             System.out.println("Pago por Horas Extras: $" + pagoExtras);
-            System.out.println("Descuento Retención: $" + retencion);
+            System.out.println("Descuento Retencion: $" + retencion);
             System.out.println("Descuento Seguridad Social: $" + seguridad);
             System.out.println("Salario Neto: $" + salarioNeto);
         }
