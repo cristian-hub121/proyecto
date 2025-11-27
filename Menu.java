@@ -32,7 +32,7 @@ public class Menu {
                     System.out.println("\nSaliendo del sistema...");
                     break;
                 default:
-                    System.out.println("Opción no válida, intente nuevamente.");
+                    System.out.println("Opción no valida, intente nuevamente.");
             }
 
         } while (opcion != 3);
@@ -53,7 +53,7 @@ public class Menu {
 
         System.out.print("Horas extras trabajadas: ");
         int horasExtras = sc.nextInt();
-        sc.nextLine(); // limpiar buffer
+        sc.nextLine(); 
 
         Empleado emp = new Empleado(nombre, cargo, sueldoBase, horasExtras);
         empleados.add(emp);
