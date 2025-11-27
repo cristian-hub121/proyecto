@@ -19,7 +19,7 @@ public class Menu {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opcion: ");
             opcion = sc.nextInt();
-            sc.nextLine(); // limpiar buffer
+            sc.nextLine(); 
 
             switch (opcion) {
                 case 1:
