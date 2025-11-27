@@ -1,15 +1,15 @@
-package pood2.empleado;
-
+package pood2.main;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ *
+ * @author pc
+ */
 public class Menu {
-
     private Scanner sc = new Scanner(System.in);
-    private ArrayList<Empleado> empleados = new ArrayList<>();
+    private ArrayList<empleado> empleados = new ArrayList<>();
     private nomina nomina = new nomina();
-
-    public void iniciar() {
+     public void iniciar() {
         int opcion;
 
         do {
@@ -19,7 +19,7 @@ public class Menu {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opcion: ");
             opcion = sc.nextInt();
-            sc.nextLine(); 
+            sc.nextLine(); // limpiar buffer
 
             switch (opcion) {
                 case 1:
@@ -55,7 +55,7 @@ public class Menu {
         int horasExtras = sc.nextInt();
         sc.nextLine(); 
 
-        Empleado emp = new Empleado(nombre, cargo, sueldoBase, horasExtras);
+        empleado emp = new empleado(nombre, cargo, sueldoBase, horasExtras);
         empleados.add(emp);
 
         System.out.println("Empleado registrado correctamente.");
@@ -70,7 +70,7 @@ public class Menu {
         System.out.println("\n===== NOMINA GENERAL =====");
         double totalNomina = 0;
 
-        for (Empleado emp : empleados) {
+        for (empleado emp : empleados) {
             double pagoExtras = nomina.calPagoHorasEx(emp.getHorasExtras());
             double retencion = nomina.calcRetencion(emp.getSueldoBase());
             double seguridad = nomina.calcularSeguridadSocial(emp.getSueldoBase());
