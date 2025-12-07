@@ -1,16 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pood2.empleado;
 
-/**
- *
- * @author ALUMNO#
- */
+import java.util.ArrayList;
+
 public class nomina {
-       
+
     private final int VALORHORAEXTRA = 35000;
+    private ArrayList<Empleado> empleados = new ArrayList<>();
+
+    public void agregarEmpleado(Empleado emp) {
+        empleados.add(emp);
+    }
 
     public double calPagoHorasEx(int horas) {
         return horas * VALORHORAEXTRA;
@@ -40,6 +39,35 @@ public class nomina {
         double descuentos = retencion + seguridad;
         return salarioBruto - descuentos;
     }
-    
+
+    public void mostrarNomina() {
+
+        if (empleados.isEmpty()) {
+            System.out.println("\nNo hay empleados registrados.");
+            return;
+        }
+
+        System.out.println("\n===== NOMINA GENERAL =====");
+        double totalNomina = 0;
+
+        for (Empleado emp : empleados) {
+
+            double pagoExtras = calPagoHorasEx(emp.getHorasExtras());
+            double retencion = calcRetencion(emp.getSueldoBase());
+            double seguridad = calcularSeguridadSocial(emp.getSueldoBase());
+            double salarioNeto = calcularSalarioNeto(emp);
+
+            totalNomina += salarioNeto;
+
+            System.out.println("\nEmpleado: " + emp.getNombre());
+            System.out.println("Cargo: " + emp.getCargo());
+            System.out.println("Sueldo Base: $" + emp.getSueldoBase());
+            System.out.println("Pago por Horas Extras: $" + pagoExtras);
+            System.out.println("Descuento Retencion: $" + retencion);
+            System.out.println("Descuento Seguridad Social: $" + seguridad);
+            System.out.println("Salario Neto: $" + salarioNeto);
+        }
+
+        System.out.println("\nTOTAL NOMINA A PAGAR POR LA EMPRESA: $" + totalNomina);
+    }
 }
-   
