@@ -1,15 +1,15 @@
 package pood2.main;
-import java.util.ArrayList;
+
 import java.util.Scanner;
-/**
- *
- * @author pc
- */
+import pood2.empleado.Empleado;
+import pood2.empleado.nomina;
+
 public class Menu {
+
     private Scanner sc = new Scanner(System.in);
-    private ArrayList<empleado> empleados = new ArrayList<>();
     private nomina nomina = new nomina();
-     public void iniciar() {
+
+    public void iniciar() {
         int opcion;
 
         do {
@@ -19,14 +19,14 @@ public class Menu {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opcion: ");
             opcion = sc.nextInt();
-            sc.nextLine(); 
+            sc.nextLine();
 
             switch (opcion) {
                 case 1:
                     registrarEmpleado();
                     break;
                 case 2:
-                    mostrarNomina();
+                    nomina.mostrarNomina();
                     break;
                 case 3:
                     System.out.println("\nSaliendo del sistema...");
@@ -36,7 +36,6 @@ public class Menu {
             }
 
         } while (opcion != 3);
-
     }
 
     private void registrarEmpleado() {
@@ -53,40 +52,11 @@ public class Menu {
 
         System.out.print("Horas extras trabajadas: ");
         int horasExtras = sc.nextInt();
-        sc.nextLine(); 
+        sc.nextLine();
 
-        empleado emp = new empleado(nombre, cargo, sueldoBase, horasExtras);
-        empleados.add(emp);
+        Empleado emp = new Empleado(nombre, cargo, sueldoBase, horasExtras);
+        nomina.agregarEmpleado(emp);
 
         System.out.println("Empleado registrado correctamente.");
-    }
-
-    private void mostrarNomina() {
-        if (empleados.isEmpty()) {
-            System.out.println("\nNo hay empleados registrados.");
-            return;
-        }
-
-        System.out.println("\n===== NOMINA GENERAL =====");
-        double totalNomina = 0;
-
-        for (empleado emp : empleados) {
-            double pagoExtras = nomina.calPagoHorasEx(emp.getHorasExtras());
-            double retencion = nomina.calcRetencion(emp.getSueldoBase());
-            double seguridad = nomina.calcularSeguridadSocial(emp.getSueldoBase());
-            double salarioNeto = nomina.calcularSalarioNeto(emp);
-
-            totalNomina += salarioNeto;
-
-            System.out.println("\nEmpleado: " + emp.getNombre());
-            System.out.println("Cargo: " + emp.getCargo());
-            System.out.println("Sueldo Base: $" + emp.getSueldoBase());
-            System.out.println("Pago por Horas Extras: $" + pagoExtras);
-            System.out.println("Descuento Retencion: $" + retencion);
-            System.out.println("Descuento Seguridad Social: $" + seguridad);
-            System.out.println("Salario Neto: $" + salarioNeto);
-        }
-
-        System.out.println("\nTOTAL NOMINA A PAGAR POR LA EMPRESA: $" + totalNomina);
     }
 }
